@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        table{
+            margin-left: 25%;
+            width: 50%;
+            border-spacing: 10px;
+            background-color: #e9e0e0d3;
+        }
+        table:hover{
+          background-color: #f2f2f2;
+        }
+        th,tr,input{
+            background-color: #e9e0e0d3;
+            
+        }
+        
+        
+        thead, td {
+    border: 2px solid rgb(167, 136, 136);
+    padding: 6px;
+    text-align: center;
+       }
+       tr:nth-child(odd) {
+    background-color: #f2f2f2;
+       }
+
+
+
+    </style>
+</head>
+<body>
+   <form action="action.php">
+    <table >
+        <thead>
+            <tr>
+                <th  colspan="2" >Student Registration Form
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><label for="fname" >First Name</label></td>
+                <td><input type="text" name="fname" id="fname" required placeholder="Enter First Name">
+                </td>
+                
+            </tr>
+
+            <tr>
+                <td><label for="lname">Last Name</label></td>
+                <td><input type="text" name="lname" id="lname" required placeholder="Enter Last Name"></td>
+            </tr>
+            <tr>
+                <td><label for="Father">Father Name</label></td>        
+                <td><input type="text" name="Father" id="Father" required placeholder="Enter Father Name"></td>
+            </tr>
+            <tr>
+                <td><label for="ProfilePic">Add Profile Picture</label></td>
+                <td><input type="file" name="ProfilePic" id="ProfilePic" required></td>
+            </tr>
+            <tr>
+                <td><label for="image">Image</label></td>
+                <td ><img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220519152227/DSA-course-by-Sandeep-Jain-banner.jpg" height="50px" width="250px" alt=""></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>                
+            <td colspan="2"><input type="submit" value="Submit"></td>
+        </tr>
+                       
+        </tfoot>
+    </table>
+   </form>
+    
+</body>
+</html>
