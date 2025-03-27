@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faulty Calculator</title>
+</head>
+<body>
+    
+    <script>
+        let random=Math.random()
+
+        let a = prompt("Enter first Number");
+        let b = prompt("Enter Second Number");
+        let c = prompt("Enter first Number");
+
+        let obj={
+            "+":"-",
+            "*":"+",
+            "*":"/",
+            "/":"**"
+        }
+
+        if(random>0.1){
+            alert(`The Result is ${eval(`${a} ${c} ${b}`)}`)
+
+        }
+        else{
+            c=obj[c];
+            alert(`The Result is ${eval(`${a} ${c} ${b}`)}`)
+
+        }
+
+
+
+
+
+
+    </script>
+</body>
+</html>
