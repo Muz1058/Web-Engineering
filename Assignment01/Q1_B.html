@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <style>
+        body{
+            background-color: #f0f0f0;
+        }
+        table {
+            background-color: #f0f0f0;
+          border-spacing: 10px 15px;
+          border-collapse: separate;
+        }
+        fieldset{
+            border: 2px solid black;
+            width: 50%;
+            border-radius: 19px;
+        }
+        input[type="submit"],[type="button"]{
+            margin-right: 79px;
+        }
+        input{
+            height: 20px;
+            border: 2px solid;
+            border-radius: 6px;
+        }
+
+      </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Add New Product</legend>
+    <form action="action.php" method="post" >
+        <table>
+            <tr>
+                <td><label for="ProductName">Product Name</label></td>
+                <td><input type="text" name="ProductName" id="" placeholder="Enter Product Name" required></td>
+            </tr>
+            <tr>
+                <td><label for="ProductCode">Product Code</label></td>
+                <td><input type="text" name="ProductCode" id="" placeholder="Bar Code" required>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="Quantity">Quantity</label></td>
+                <td><input type="number" name="Quantity" id="" min="1" required></td>
+            </tr>
+            <tr>
+                <td><label for="Category">Category</label></td>
+                <td><select name="Category" id="">
+                    <option value="Select" disabled selected>Select Brand</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="Computer">Computer</option>
+                    <option value="laptop">Laptop</option>
+                </select></td>
+            </tr>
+            <tr> 
+                <td><label for="Product Image">Product Image</label></td>
+                <td><input type="file" name="ProductImage" id="" accept="image/*" required></td>
+            </tr>
+            <tr>
+                <td><label for="Product">Product</label></td>
+                <td><textarea name="Product" id="" cols="21" rows="7"></textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Save"><input type="button" value="Clear"></td> 
+                
+            </tr>
+        </table>
+    </form>
+</fieldset>
+</body>
+</html>
