@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -72,5 +72,208 @@
         </table>
     </form>
 </fieldset>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add New Product</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8fb;
+      padding: 40px;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border: 2px solid #333;
+      border-radius: 20px;
+      width: 500px;
+      padding: 20px 30px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 10px;
+      vertical-align: middle;
+    }
+
+    label {
+      font-weight: bold;
+      display: inline-block;
+      width: 140px;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #999;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+
+    input[type="file"] {
+      border-radius: 0;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 80px;
+      border-radius: 12px;
+    }
+
+    .required {
+      color: red;
+      margin-left: 4px;
+    }
+
+    .button-row {
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    button {
+      padding: 10px 25px;
+      border: none;
+      border-radius: 16px;
+      font-size: 16px;
+      margin: 0 10px;
+      cursor: pointer;
+      background-color: #007acc;
+      color: white;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    button.clear {
+      background-color: #aaa;
+    }
+
+    button.clear:hover {
+      background-color: #888;
+    }
+
+    .file-container {
+      display: flex;
+    }
+
+    .file-container input[type="file"] {
+      border-right: none;
+      border-radius: 12px 0 0 12px;
+    }
+
+    .file-container label {
+      padding: 8px 12px;
+      background-color: #e0e0e0;
+      border: 1px solid #999;
+      border-left: none;
+      border-radius: 0 12px 12px 0;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Add New Product</h2>
+    <form>
+      <table>
+        <tr>
+          <td><label for="name">Product Name</label></td>
+          <td>
+            <input type="text" id="name" name="name" placeholder="Enter Product Name" required>
+            <span class="required">*</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="code">Product Code</label></td>
+          <td>
+            <input type="text" id="code" name="code" placeholder="Bar Code" required>
+            <span class="required">*</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="quantity">Quantity</label></td>
+          <td>
+            <input type="number" id="quantity" name="quantity" required>
+            <span class="required">*</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="category">Category</label></td>
+          <td>
+            <select id="category" name="category" required>
+              <option value="">Select Category</option>
+              <option>Electronics</option>
+              <option>Fashion</option>
+              <option>Groceries</option>
+              <option>Books</option>
+            </select>
+            <span class="required">*</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="brand">Brand</label></td>
+          <td>
+            <select id="brand" name="brand" required>
+              <option value="">Select Brand</option>
+              <option>Samsung</option>
+              <option>Apple</option>
+              <option>Nike</option>
+              <option>Adidas</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="image">Product Image</label></td>
+          <td>
+            <div class="file-container">
+              <input type="file" id="image" name="image" accept="image/*" required>
+              <label for="image">File</label>
+            </div>
+            <span class="required">*</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td><label for="description">Product</label></td>
+          <td>
+            <textarea id="description" name="description" placeholder="Product Description..."></textarea>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="2" class="button-row">
+            <button type="submit">Save</button>
+            <button type="reset" class="clear">Clear</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
 </body>
 </html>
