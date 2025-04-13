@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Product</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+    }
+
+    fieldset {
+      border: 1px solid black;
+      width: 500px;
+      border-radius: 25px;
+      margin: auto;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+
+    legend {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-spacing: 10px 15px;
+      border-collapse: separate;
+    }
+
+    label {
+      font-weight: bold;
+      display: inline-block;
+      width: 140px;
+    }
+
+    .input-wrapper {
+      width: 100%;
+      position: relative;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #999;
+      font-size: 14px;
+      border-radius: 12px;
+      box-sizing: border-box;
+    }
+
+    select {
+      width: 100%;
+    }
+
+    .image-preview-box {
+      width: 80px;
+      height: 80px;
+      border: 1px solid #ccc;
+      display: block;
+      margin: 0 auto;
+      object-fit: cover;
+    }
+
+    .image-preview-label {
+      text-align: center;
+      display: block;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .button-row {
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 10px 25px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      margin: 0 10px;
+      cursor: pointer;
+      background-color: #007acc;
+      color: white;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #005fa3;
+    }
+
+    input[type="reset"] {
+      background-color: #aaa;
+    }
+
+    input[type="reset"]:hover {
+      background-color: #888;
+    }
+  </style>
+</head>
+<body>
+  <fieldset>
+    <legend>Update Product</legend>
+    <form action="update.php" method="post" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td><label for="ProductName">Product Name</label></td>
+          <td>
+            <div class="input-wrapper">
+              <input type="text" name="ProductName" id="ProductName" placeholder="Enter Product Name" required />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="ProductCode">Product Code</label></td>
+          <td>
+            <div class="input-wrapper">
+              <input type="text" name="ProductCode" id="ProductCode" placeholder="Bar Code" required />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Quantity">Quantity</label></td>
+          <td>
+            <div class="input-wrapper">
+              <input type="number" name="Quantity" id="Quantity" min="1" required />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Category">Category</label></td>
+          <td>
+            <div class="input-wrapper">
+              <select name="Category" id="Category" required>
+                <option value="" disabled selected>Select Category</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Computer">Computer</option>
+                <option value="Laptop">Laptop</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Brand">Brand</label></td>
+          <td>
+            <div class="input-wrapper">
+              <select name="Brand" id="Brand" required>
+                <option value="" disabled selected>Select Brand</option>
+                <option value="HP">HP</option>
+                <option value="Samsung">Samsung</option>
+                <option value="Dell">Dell</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td style="text-align: center;">
+            <span class="image-preview-label">Product Image</span>
+            <img src="preview.png" alt="Product Image" class="image-preview-box" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="ProductImage">Product Image</label></td>
+          <td>
+            <div class="input-wrapper">
+              <input type="file" name="ProductImage" id="ProductImage" accept="image/*" />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="button-row">
+            <input type="submit" value="Update" />
+            <input type="reset" value="Clear" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </fieldset>
+</body>
+</html>
