@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product List</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    .product-list-container {
+      border: 2px solid black;
+      border-radius: 25px;
+      width: 800px;
+      margin: 30px auto;
+      background-color: #fff;
+      padding: 20px;
+    }
+
+    .product-list-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 15px;
+    }
+
+    th {
+      text-align: left;
+      padding-bottom: 10px;
+      font-weight: bolder;
+    }
+
+    td {
+      vertical-align: middle;
+      padding: 10px;
+      background-color: #fff;
+      font-weight: 500;
+    }
+
+    tr td {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    tr td:first-child {
+      width: 100px;
+    }
+
+    .product-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .operations-buttons {
+      display: flex;
+      gap: 10px;
+      height: 70px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 15px;
+      font-size: 13px;
+      cursor: pointer;
+      background-color: #ccc;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      width: 50%;
+    }
+
+    .btn:hover {
+      background-color: #aaa;
+    }
+
+    th, td {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="product-list-container">
+    <div class="product-list-title">Product List</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Brand</th>
+          <th>Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <img src="iphone.jpg" alt="iPhone 13s" class="product-image"><br>iPhone 13s
+          </td>
+          <td>10</td>
+          <td>150,000</td>
+          <td>Mobiles</td>
+          <td>Apple</td>
+          <td class="operations-buttons">
+            <button class="btn">Details</button>
+            <button class="btn">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="note10.jpg" alt="Samsung Note 10" class="product-image"><br>Samsung Note 10
+          </td>
+          <td>6</td>
+          <td>193,000</td>
+          <td>Mobiles</td>
+          <td>Samsung</td>
+          <td class="operations-buttons">
+            <button class="btn">Details</button>
+            <button class="btn">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="note20s.jpg" alt="Samsung Note 20s" class="product-image"><br>Samsung Note 20s
+          </td>
+          <td>3</td>
+          <td>213,000</td>
+          <td>Mobiles</td>
+          <td>Samsung</td>
+          <td class="operations-buttons">
+            <button class="btn">Details</button>
+            <button class="btn">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
