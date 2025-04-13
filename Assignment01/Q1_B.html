@@ -1,159 +1,74 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Product</title>
-    <style>
-        body{
-            background-color: #f0f0f0;
-        }
-        table {
-            background-color: #f0f0f0;
-          border-spacing: 10px 15px;
-          border-collapse: separate;
-        }
-        fieldset{
-            border: 2px solid black;
-            width: 50%;
-            border-radius: 19px;
-        }
-        input[type="submit"],[type="button"]{
-            margin-right: 79px;
-        }
-        input{
-            height: 20px;
-            border: 2px solid;
-            border-radius: 6px;
-        }
-
-      </style>
-</head>
-<body>
-    <fieldset>
-        <legend>Add New Product</legend>
-    <form action="action.php" method="post" >
-        <table>
-            <tr>
-                <td><label for="ProductName">Product Name</label></td>
-                <td><input type="text" name="ProductName" id="" placeholder="Enter Product Name" required></td>
-            </tr>
-            <tr>
-                <td><label for="ProductCode">Product Code</label></td>
-                <td><input type="text" name="ProductCode" id="" placeholder="Bar Code" required>
-                </td>
-            </tr>
-            <tr>
-                <td><label for="Quantity">Quantity</label></td>
-                <td><input type="number" name="Quantity" id="" min="1" required></td>
-            </tr>
-            <tr>
-                <td><label for="Category">Category</label></td>
-                <td><select name="Category" id="">
-                    <option value="Select" disabled selected>Select Brand</option>
-                    <option value="Mobile">Mobile</option>
-                    <option value="Computer">Computer</option>
-                    <option value="laptop">Laptop</option>
-                </select></td>
-            </tr>
-            <tr> 
-                <td><label for="Product Image">Product Image</label></td>
-                <td><input type="file" name="ProductImage" id="" accept="image/*" required></td>
-            </tr>
-            <tr>
-                <td><label for="Product">Product</label></td>
-                <td><textarea name="Product" id="" cols="21" rows="7"></textarea></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="Save"><input type="button" value="Clear"></td> 
-                
-            </tr>
-        </table>
-    </form>
-</fieldset>
-</body>
-</html> -->
-
 <!DOCTYPE html>
-<html lang="en">
+<html >
 <head>
-  <meta charset="UTF-8">
-  <title>Add New Product</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Product</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f8fb;
-      padding: 40px;
+      background-color: #f0f0f0;
     }
-
-    .container {
-      background-color: #ffffff;
-      border: 2px solid #333;
-      border-radius: 20px;
+    fieldset {
+      border: 1px solid black;
       width: 500px;
-      padding: 20px 30px;
-      margin: 0 auto;
+      border-radius: 25px;
+      margin: auto;
+      margin-top: 30px;
+      padding: 20px;
+      position: relative;
     }
-
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-
     table {
-      width: 100%;
-      border-collapse: collapse;
+      background-color: #f1f1f1;
+      border-spacing: 10px 15px;
+      border-collapse: separate;
     }
-
-    td {
-      padding: 10px;
-      vertical-align: middle;
-    }
-
     label {
       font-weight: bold;
       display: inline-block;
       width: 140px;
     }
-
-    input[type="text"],
-    input[type="number"],
-    input[type="file"],
-    select,
-    textarea {
+    .input-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    .input-wrapper input[type="text"],
+    .input-wrapper input[type="number"],
+    .input-wrapper input[type="file"],
+    .input-wrapper select,
+    .input-wrapper textarea {
       width: 100%;
       padding: 8px 10px;
       border: 1px solid #999;
       border-radius: 12px;
       font-size: 14px;
+      box-sizing: border-box;
     }
-
-    input[type="file"] {
-      border-radius: 0;
+    .required {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: red;
+      font-size: 18px;
+      pointer-events: none;
+      margin-left: 5px;
     }
 
     textarea {
-      resize: vertical;
-      height: 80px;
-      border-radius: 12px;
-    }
-
-    .required {
-      color: red;
-      font-size: 30px;
-      
+      resize: none;
+      height: 100px;
     }
 
     .button-row {
       text-align: center;
       padding-top: 20px;
     }
+    
 
-    button {
+    input[type="submit"],
+    input[type="reset"] {
       padding: 10px 25px;
       border: none;
-      border-radius: 16px;
+      border-radius: 20px;
       font-size: 16px;
       margin: 0 10px;
       cursor: pointer;
@@ -161,122 +76,105 @@
       color: white;
       transition: background-color 0.3s;
     }
-
-    button:hover {
+    input[type="submit"]:hover {
       background-color: #005fa3;
     }
-
-    button.clear {
+    input[type="reset"] {
       background-color: #aaa;
     }
-
-    button.clear:hover {
+    input[type="reset"]:hover {
       background-color: #888;
     }
-
-    .file-container {
-      display: flex;
-    }
-
-    .file-container input[type="file"] {
-      border-right: none;
-      border-radius: 12px 0 0 12px;
-    }
-
-    .file-container label {
-      padding: 8px 12px;
-      background-color: #e0e0e0;
-      border: 1px solid #999;
-      border-left: none;
-      border-radius: 0 12px 12px 0;
-      cursor: pointer;
+    legend {
+      font-size: 18px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Add New Product</h2>
-    <form>
+  <fieldset>
+    <legend>Add New Product</legend>
+    <form action="action.php" method="post" enctype="multipart/form-data">
       <table>
         <tr>
-          <td><label for="name">Product Name  </label></td>
+          <td><label for="ProductName">Product Name</label></td>
           <td>
-            <input type="text" id="name" name="name" placeholder="Enter Product Name"  required>
-          </td>
-          <td><span class="required">*</span></td>
-        </tr>
-
-        <tr>
-          <td><label for="code">Product Code</label></td>
-          <td>
-            <input type="text" id="code" name="code" placeholder="Bar Code" required>
-          </td>
-          <td><span class="required">*</span></td>
-        </tr>
-
-        <tr>
-          <td><label for="quantity">Quantity</label></td>
-          <td>
-            <input type="number" id="quantity" name="quantity" required>
-          </td>
-          <td><span class="required">*</span></td>
-        </tr>
-
-        <tr>
-          <td><label for="category">Category</label></td>
-          <td>
-            <select id="category" name="category" required>
-              <option value="">Select Category</option>
-              <option>Electronics</option>
-              <option>Fashion</option>
-              <option>Groceries</option>
-              <option>Books</option>
-            </select>
-          </td>
-          <td><span class="required">*</span></td>
-        </tr>
-
-        <tr>
-          <td><label for="brand">Brand</label></td>
-          <td>
-            <select id="brand" name="brand" required>
-              <option value="">Select Brand</option>
-              <option>Samsung</option>
-              <option>Apple</option>
-              <option>Nike</option>
-              <option>Adidas</option>
-            </select>
-          </td>
-          <td><span class="required">*</span></td>
-        </tr>
-
-        <tr>
-          <td><label for="image">Product Image</label></td>
-          <td>
-            <div class="file-container">
-              <input type="file" id="image" name="image" accept="image/*" required>
-              <label for="image">File</label>
-            </div>           
-          </td>
-          <td><span class="required">*</span></td>
-        </tr>
-
-        <tr>
-          <td><label for="description">Product</label></td>
-          <td>
-            <textarea id="description" name="description" placeholder="Product Description..."></textarea>
+            <div class="input-wrapper">
+              <input type="text" name="ProductName" id="ProductName" placeholder="Enter Product Name" required />
+              <span class="required">*</span>
+            </div>
           </td>
         </tr>
-
         <tr>
-            <td></td>
-          <td colspan="" class="button-row">
-            <button type="submit">Save</button>
-            <button type="reset" class="clear">Clear</button>
+          <td><label for="ProductCode">Product Code</label></td>
+          <td>
+            <div class="input-wrapper">
+              <input type="text" name="ProductCode" id="ProductCode" placeholder="Bar Code" required />
+              <span class="required">*</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Quantity">Quantity</label></td>
+          <td>
+            <div class="input-wrapper">
+              <input type="number" name="Quantity" id="Quantity" min="1" required />
+              <span class="required">*</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Category">Category</label></td>
+          <td>
+            <div class="input-wrapper">
+              <select name="Category" id="Category" required>
+                <option value="" disabled selected>Select Category</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Computer">Computer</option>
+                <option value="Laptop">Laptop</option>
+              </select>
+              <span class="required">*</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Brand">Brand</label></td>
+          <td>
+            <div class="input-wrapper">
+              <select name="Brand" id="Brand">
+                <option value="" disabled selected>Select Brand</option>
+                <option value="Samsung">Samsung</option>
+                <option value="HP">HP</option>
+                <option value="Dell">Dell</option>
+              </select>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="ProductImage">Product Image</label></td>
+          <td>
+            <div class="input-wrapper">
+              <input type="file" name="ProductImage" id="ProductImage" accept="image/*" required />
+              <span class="required">*</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Product">Product Description</label></td>
+          <td>
+            <div class="input-wrapper">
+              <textarea name="Product" id="Product"></textarea>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="button-row">
+            <input type="submit" value="Save" />
+            <input type="reset" value="Clear" />
           </td>
         </tr>
       </table>
     </form>
-  </div>
+  </fieldset>
 </body>
 </html>
