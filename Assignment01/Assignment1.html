@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Management</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #007acc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      background-color: white;
+      color: #007acc;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    nav button:hover {
+      background-color: #005fa3;
+      color: white;
+    }
+
+    section {
+      display: none;
+      padding: 20px;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    fieldset {
+      border: 1px solid black;
+      width: 500px;
+      border-radius: 25px;
+      margin: auto;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+
+    table {
+      width: 100%;
+      border-spacing: 10px 15px;
+      border-collapse: separate;
+    }
+
+    label {
+      font-weight: bold;
+      display: inline-block;
+      width: 140px;
+    }
+
+    .input-wrapper {
+      width: 100%;
+      position: relative;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #999;
+      font-size: 14px;
+      border-radius: 12px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    .button-row {
+      text-align: center;
+      padding-top: 20px;
+    }
+
+    input[type="submit"],
+    input[type="reset"] {
+      padding: 10px 25px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      margin: 0 10px;
+      cursor: pointer;
+      background-color: #007acc;
+      color: white;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #005fa3;
+    }
+
+    input[type="reset"] {
+      background-color: #aaa;
+    }
+
+    input[type="reset"]:hover {
+      background-color: #888;
+    }
+
+    .product-list-container {
+      border: 2px solid black;
+      border-radius: 25px;
+      width: 800px;
+      margin: 30px auto;
+      background-color: #fff;
+      padding: 20px;
+    }
+
+    .product-list-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .product-list-container table {
+      width: 100%;
+      border-spacing: 0 15px;
+      border-collapse: separate;
+    }
+
+    .product-list-container th,
+    .product-list-container td {
+      text-align: center;
+      padding: 10px;
+      background-color: #fff;
+      font-weight: 500;
+    }
+
+    .product-list-container tr td {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .product-image {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .operations-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      height: 70px;
+    }
+
+    .btn {
+        width: 50%;
+
+      border: none;
+      border-radius: 15px;
+      font-size: 13px;
+      cursor: pointer;
+      background-color: #ccc;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #aaa;
+    }
+
+    .image-preview-box {
+      width: 80px;
+      height: 80px;
+      border: 1px solid #ccc;
+      display: block;
+      margin: 0 auto;
+      object-fit: cover;
+    }
+
+    .image-preview-label {
+      text-align: center;
+      display: block;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    legend{
+        font-weight: bolder;
+    }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <button onclick="showSection('add')">Add Product</button>
+  <button onclick="showSection('list')">Product List</button>
+  <button onclick="showSection('update')">Update Product</button>
+</nav>
+
+<section id="add" class="active">
+  <fieldset>
+    <legend>Add New Product</legend>
+    <form action="action.php" method="post" enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td><label for="ProductName">Product Name</label></td>
+          <td>
+            <div class="input-wrapper">
+              <input type="text" name="ProductName" id="ProductName" placeholder="Enter Product Name" required />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="ProductCode">Product Code</label></td>
+          <td>
+            <div class="input-wrapper">
+              <input type="text" name="ProductCode" id="ProductCode" placeholder="Bar Code" required />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Quantity">Quantity</label></td>
+          <td>
+            <div class="input-wrapper">
+              <input type="number" name="Quantity" id="Quantity" min="1" required />
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Category">Category</label></td>
+          <td>
+            <select name="Category" required>
+              <option value="" disabled selected>Select Category</option>
+              <option value="Mobile">Mobile</option>
+              <option value="Computer">Computer</option>
+              <option value="Laptop">Laptop</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Brand">Brand</label></td>
+          <td>
+            <select name="Brand">
+              <option value="" disabled selected>Select Brand</option>
+              <option value="Samsung">Samsung</option>
+              <option value="HP">HP</option>
+              <option value="Dell">Dell</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="ProductImage">Product Image</label></td>
+          <td>
+            <input type="file" name="ProductImage" accept="image/*" required />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Product">Description</label></td>
+          <td><textarea name="Product" id="Product"></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="button-row">
+            <input type="submit" value="Save" />
+            <input type="reset" value="Clear" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </fieldset>
+</section>
+
+<section id="list">
+  <div class="product-list-container">
+    <div class="product-list-title">Product List</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Brand</th>
+          <th>Operations</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><img src="iphone.jpg" alt="iPhone" class="product-image"><br>iPhone 13s</td>
+          <td>10</td>
+          <td>150,000</td>
+          <td>Mobiles</td>
+          <td>Apple</td>
+          <td class="operations-buttons">
+            <button class="btn">Details</button>
+            <button class="btn">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <td><img src="note10.jpg" alt="Note 10" class="product-image"><br>Samsung Note 10</td>
+          <td>6</td>
+          <td>193,000</td>
+          <td>Mobiles</td>
+          <td>Samsung</td>
+          <td class="operations-buttons">
+            <button class="btn">Details</button>
+            <button class="btn">Edit</button>
+          </td>
+        </tr>
+        <tr>
+            <td><img src="note9.jpg" alt="Note 9" class="product-image"><br>Samsung Note 9</td>
+            <td>6</td>
+            <td>193,000</td>
+            <td>Mobiles</td>
+            <td>Samsung</td>
+            <td class="operations-buttons">
+              <button class="btn">Details</button>
+              <button class="btn">Edit</button>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="update">
+  <fieldset>
+    <legend>Update Product</legend>
+    <form action="update.php" method="post" >
+      <table>
+        <tr>
+          <td><label for="ProductName">Product Name</label></td>
+          <td><input type="text" name="ProductName" required></td>
+        </tr>
+        <tr>
+          <td><label for="ProductCode">Product Code</label></td>
+          <td><input type="text" name="ProductCode" required></td>
+        </tr>
+        <tr>
+          <td><label for="Quantity">Quantity</label></td>
+          <td><input type="number" name="Quantity" min="1" required></td>
+        </tr>
+        <tr>
+          <td><label for="Category">Category</label></td>
+          <td>
+            <select name="Category" required>
+              <option value="" disabled selected>Select Category</option>
+              <option value="Mobile">Mobile</option>
+              <option value="Computer">Computer</option>
+              <option value="Laptop">Laptop</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td><label for="Brand">Brand</label></td>
+          <td>
+            <select name="Brand" required>
+              <option value="" disabled selected>Select Brand</option>
+              <option value="HP">HP</option>
+              <option value="Samsung">Samsung</option>
+              <option value="Dell">Dell</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <span class="image-preview-label">Product Image</span>
+            <img src="preview.png" alt="Product Image" class="image-preview-box" />
+          </td>
+        </tr>
+        <tr>
+          <td><label for="ProductImage">New Image</label></td>
+          <td><input type="file" name="ProductImage" accept="image/*" /></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="button-row">
+            <input type="submit" value="Update" />
+            <input type="reset" value="Clear" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </fieldset>
+</section>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll("section").forEach(section => {
+      section.classList.remove("active");
+    });
+    document.getElementById(id).classList.add("active");
+  }
+</script>
+
+</body>
+</html>
