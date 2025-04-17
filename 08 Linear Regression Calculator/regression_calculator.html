@@ -325,6 +325,16 @@ function average(array) {
   return addArray(array) / array.length;
 }
 
+
+function cleanUpPredictionElements() {
+ 
+  const predictionInputs = document.querySelectorAll("#predictionInput");
+  const predictionResults = document.querySelectorAll(".prediction-result");
+  
+  predictionInputs.forEach(input => input.remove());
+  predictionResults.forEach(result => result.remove());
+}
+
 numberOfRows.addEventListener('keydown', function (e) {
   if (e.key === "Enter") {
     const rows = parseInt(numberOfRows.value);
@@ -339,7 +349,6 @@ numberOfRows.addEventListener('keydown', function (e) {
     const dataBody = document.getElementById("dataBody");
     dataBody.innerHTML = "";
 
-
     for (let i = 1; i <= rows; i++) {
       const row = document.createElement("tr");
       row.innerHTML = `
@@ -350,16 +359,13 @@ numberOfRows.addEventListener('keydown', function (e) {
       dataBody.appendChild(row);
     }
 
-
     if (!document.getElementById("calculate")) {
       calculateButtonContainer.appendChild(submitbtn);
     }
 
-
     if (dynamicRows && body.contains(dynamicRows)) {
       body.removeChild(dynamicRows);
     }
-
  
     submitbtn.addEventListener("click", function (e) {
       e.preventDefault();
@@ -438,30 +444,88 @@ numberOfRows.addEventListener('keydown', function (e) {
           <p><b>&#8721;(x−x̄)(y−ȳ) =</b> ${numerator.toFixed(4)}</p>
           <p><b>&#8721;(x−x̄)² =</b> ${denominator.toFixed(4)}</p>
          
-           <span>
-           <b>m = </b>
-  <span class="fraction">
-    <div class="fraction-top">${numerator.toFixed(4)}</div>
-    <div>${denominator.toFixed(4)}</div>
-  </span>
-  <span style="margin-left: 10px;"><b>= ${m.toFixed(4)}</b></span>
-</span><br>
- <p class="regression-line"><b>Regression Line:</b> y = ${m.toFixed(4)}x + ${c.toFixed(4)}</p>
-        <button id="newCalcBtn">New Calculation</button>  
-      `;
+          <span>
+            <b>m = </b>
+            <span class="fraction">
+              <div class="fraction-top">${numerator.toFixed(4)}</div>
+              <div>${denominator.toFixed(4)}</div>
+            </span>
+            <span style="margin-left: 10px;"><b>= ${m.toFixed(4)}</b></span>
+          </span><br>
+          <p class="regression-line"><b>Regression Line:</b> y = ${m.toFixed(4)}x + ${c.toFixed(4)}</p>
+         
+          <div class="predictionDiv">
+            <button id="predictionBtn">Make Prediction</button>
+            <div id="predictionContainer"></div>
+          </div>
+          <br>
+          <button id="newCalcBtn">New Calculation</button>
+        </div>`;
 
+      let predictionButton = document.getElementById("predictionBtn");
+      
+      
+      let predictionInputActive = false;
+      
+      predictionButton.addEventListener('click', () => {
+        
+        if (predictionInputActive) return;
+        
+      
+        cleanUpPredictionElements();
+        
+     
+        let predictionContainer = document.getElementById("predictionContainer");
+        let predictionInput = document.createElement("input");
+        predictionInput.type = "text";
+        predictionInput.placeholder = "Enter value of x and press Enter";
+        predictionInput.id = "predictionInput";
+        predictionButton.style.marginTop="20px"
+        predictionButton.style.marginBottom="20px"
+        predictionInput.required = true;
+        predictionContainer.appendChild(predictionInput);
+        predictionInput.focus(); 
+        
+        predictionInputActive = true;
+   
+        predictionInput.addEventListener("keydown", function(event) {
+          if (event.key === "Enter") {
+            const xValue = parseFloat(predictionInput.value);
+            
+            if (isNaN(xValue)) {
+              
+              alert("Please enter a valid numeric value for X");
+              return;
+            }
+              
+            const predictedY = m * xValue + c;
+              
+            
+            const resultDiv = document.createElement("div");
+            resultDiv.style.margin="10px"
+            resultDiv.innerHTML = `<strong>If X = ${xValue}, then Y = <mark>${predictedY.toFixed(4)}</mark></strong>`;
+            resultDiv.className = "prediction-result";
+            
+            
+            predictionContainer.appendChild(resultDiv);        
+            predictionInput.value = "";
+          }
+        });
+      });
+
+      
       document.getElementById("newCalcBtn").addEventListener("click", () => {
         numberOfRows.value = "";
         document.getElementById("dataBody").innerHTML = "";
         tableHeader.innerHTML = "";
         resultField.innerHTML = "";
-        calculateButtonContainer.innerHTML = "";
-        body.appendChild(dynamicRows); 
+        calculateButtonContainer.innerHTML = "";        
+
+        cleanUpPredictionElements();      
+        body.appendChild(dynamicRows);
       });
     });
   }
-});
-
-  </script>
+}); </script>
 </body>
 </html>
