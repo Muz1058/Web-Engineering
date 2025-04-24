@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Nav Bar</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      background-color: #678dd1;
+      overflow: hidden;
+    }
+
+    .nav-links{
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+    a {
+      font-size: 17px;
+      text-decoration: none;
+      padding: 14px 26px;
+      color: #f1f1f1;
+      font-weight: bold;
+      text-align: center;
+    }
+    a:hover{
+        background-color: #f1f1f1;
+      color: rgba(0, 0, 0, 0.705);
+      border-bottom: 2px solid #678dd1;
+    }
+    .menu-icon{
+        display: none;
+        padding: 14px 26px;
+        cursor: pointer;
+        font-size: 22px;
+        color: #f1f1f1;
+    }
+    @media (max-width:768px ) {
+        .nav-links{
+       flex-direction: column;
+       display: none;
+       width: 100%;
+       }
+       .nav-links.active{
+        display: flex;
+       }
+       .menu-icon{
+        display: block;
+        float: left;
+       }
+       nav a{
+        float: none;
+        width: 100%;
+        text-align: left;
+       }
+
+    }
+    
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <span class="menu-icon" onclick="toggleMenu()">☰</span>
+      <div class="nav-links" id="navLinks">
+        <a class="active" href="#">Home</a>
+        <a href="#">News</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Services</a>
+      </div>
+    </nav>
+  </header>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("navLinks").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
