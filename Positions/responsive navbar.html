@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive NAV Bar</title>
+    <link rel="stylesheet" href="navBar.css">
+</head>
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="closeSideBar()"><a href=""><img src="close.svg" height="26" width="26" alt=""></a></li>
+            <li><a  href="">Products</a></li>
+            <li><a  href="">Services</a></li>
+            <li><a  href="">About</a></li>
+            <li><a  href="">Contacts</a></li>
+        </ul>
+        <ul>
+            <li><a  href="">Logo</a></li>
+            <li><a class="items" href="">Products</a></li>
+            <li><a class="items" href="">Services</a></li>
+            <li><a class="items" href="">About</a></li>
+            <li><a class="items" href="">Contacts</a></li>
+            <li class="menuButton" onclick="showSideBar()"><a href="#"><img src="menu.svg" height="26" width="26" alt="menu.svg"></a></li>
+        </ul>
+    </nav>
+</body>
+<script>
+    function showSideBar(){
+        const sidebar=document.querySelector(".sidebar")
+        sidebar.style.display="flex"
+
+    }
+    function closeSideBar(){
+const sidebar=document.querySelector(".sidebar")
+        sidebar.style.display="none"
+    }
+</script>
+</html>
