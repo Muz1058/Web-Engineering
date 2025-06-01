@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Validated Form</title>
+  <style>
+    form {
+      width: 400px;
+      margin: auto;
+    }
+    .error {
+      color: red;
+      font-size: 13px;
+    }
+    input, select, textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="myForm" onsubmit="return validateForm()">
+    <h2>Registration Form</h2>
+
+    <!-- Text -->
+    <label>Full Name:</label>
+    <input type="text" id="name">
+    <div class="error" id="nameError"></div>
+
+    <!-- Email -->
+    <label>Email:</label>
+    <input type="email" id="email">
+    <div class="error" id="emailError"></div>
+
+    <!-- Password -->
+    <label>Password:</label>
+    <input type="password" id="password">
+    <div class="error" id="passwordError"></div>
+
+    <!-- Number -->
+    <label>Age:</label>
+    <input type="number" id="age">
+    <div class="error" id="ageError"></div>
+
+    <!-- Date -->
+    <label>Date of Birth:</label>
+    <input type="date" id="dob">
+    <div class="error" id="dobError"></div>
+
+    <!-- Radio -->
+    <label>Gender:</label>
+    <input type="radio" name="gender" value="Male"> Male
+    <input type="radio" name="gender" value="Female"> Female
+    <div class="error" id="genderError"></div>
+
+    <!-- Checkbox -->
+    <label>
+      <input type="checkbox" id="agree"> I agree to the terms
+    </label>
+    <div class="error" id="agreeError"></div>
+
+    <!-- Select -->
+    <label>Country:</label>
+    <select id="country">
+      <option value="">--Select--</option>
+      <option value="USA">USA</option>
+      <option value="UK">UK</option>
+      <option value="India">India</option>
+    </select>
+    <div class="error" id="countryError"></div>
+
+    <!-- Textarea -->
+    <label>Message:</label>
+    <textarea id="message" rows="3"></textarea>
+    <div class="error" id="messageError"></div>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      let valid = true;
+
+      // Clear all errors
+      document.querySelectorAll('.error').forEach(e => e.textContent = '');
+
+      // Name
+      const name = document.getElementById("name").value.trim();
+      if (name === "") {
+        document.getElementById("nameError").textContent = "Name is required.";
+        valid = false;
+      }
+
+      // Email
+      const email = document.getElementById("email").value.trim();
+      const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+      if (!emailPattern.test(email)) {
+        document.getElementById("emailError").textContent = "Enter a valid email.";
+        valid = false;
+      }
+
+      // Password
+      const password = document.getElementById("password").value;
+      if (password.length < 6) {
+        document.getElementById("passwordError").textContent = "Password must be at least 6 characters.";
+        valid = false;
+      }
+
+      // Age
+      const age = document.getElementById("age").value;
+      if (age === "" || age < 1) {
+        document.getElementById("ageError").textContent = "Enter a valid age.";
+        valid = false;
+      }
+
+      // Date of Birth
+      const dob = document.getElementById("dob").value;
+      if (dob === "") {
+        document.getElementById("dobError").textContent = "Select your date of birth.";
+        valid = false;
+      }
+
+      // Gender
+      const gender = document.querySelector('input[name="gender"]:checked');
+      if (!gender) {
+        document.getElementById("genderError").textContent = "Select your gender.";
+        valid = false;
+      }
+
+      // Agree to terms
+      const agree = document.getElementById("agree").checked;
+      if (!agree) {
+        document.getElementById("agreeError").textContent = "You must agree to the terms.";
+        valid = false;
+      }
+
+      // Country
+      const country = document.getElementById("country").value;
+      if (country === "") {
+        document.getElementById("countryError").textContent = "Select your country.";
+        valid = false;
+      }
+
+      // Message
+      const message = document.getElementById("message").value.trim();
+      if (message === "") {
+        document.getElementById("messageError").textContent = "Please enter a message.";
+        valid = false;
+      }
+
+      return valid; // prevent form submission if false
+    }
+  </script>
+
+</body>
+</html>
