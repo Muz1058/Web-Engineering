@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Day and Night Toggle</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #414141;
+    }
+    img{
+      transition: box-shadow 0.3s ease ;
+      margin-left: 36%;
+         
+     
+
+    }
+     button{
+     
+      margin-left: 48%;
+      margin-right: 48%;
+      padding: 10px 16px;
+      text-align: center;
+      
+      background-color: black;
+      color: white;
+ 
+
+      height: 80px;
+      width: 100px;
+      border-radius: 50%;
+      border: none;
+
+
+     }
+     button:hover{
+      transition: box-shadow 0.3s ease ;
+      font-weight: bolder;
+
+
+     }
+     h2{
+      text-align: center;
+      margin: 50px auto;
+      font-weight: bold;
+      color: white;
+     }
+  </style>
+</head>
+<body>
+
+  <h2>Time of Day Viewer</h2>
+
+ 
+  <img 
+    id="dayNightImage" 
+    src="day.png" 
+    alt="Daytime" 
+    width="400" 
+    height="400"
+    style="transition: box-shadow 0.3s ease;"
+    onmouseover="addEffect()" 
+    onmouseout="removeEffect()"
+  />
+
+  <br><br>
+
+  <!-- Toggle Button -->
+  <button id="toggleBtn" onclick="toggleDayNight()">Night</button>
+
+  <!-- Script -->
+  <script>
+    let isDay = true;
+
+    function toggleDayNight() {
+      const img = document.getElementById("dayNightImage");
+      const btn = document.getElementById("toggleBtn");
+
+      if (isDay) {
+       
+        img.src = "night.png"; 
+        img.alt = "Nighttime";
+        btn.textContent = "Day";
+        btn.style.backgroundColor="White";
+        btn.style.color="Black";
+        isDay = false;
+
+      } else {
+        
+        img.src = "day.png";
+        img.alt = "Daytime";
+        btn.textContent = "Night";
+        btn.style.backgroundColor="Black";
+        btn.style.color="White";
+        isDay = true;
+      }
+    }
+
+    function addEffect() {
+      document.getElementById("dayNightImage").style.boxShadow = "0 0 15px blue";
+    }
+
+    function removeEffect() {
+      document.getElementById("dayNightImage").style.boxShadow = "none";
+    }
+  </script>
+
+</body>
+</html>
