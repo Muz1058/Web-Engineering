@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation Example</title>
+    <style>
+        body{
+              background-color: #414141;
+              color: #fafafa;
+        }
+      form {
+        max-width: 500px;
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+      
+      }
+
+      label {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+      }
+
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 4px;
+      }
+
+      button {
+        height: 50px;
+        width: 90px;
+        margin-top: 20px;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        background-color: #000;
+        color: #fafafa;
+
+      }
+      button:hover{
+        font-weight: bold;
+      }
+
+      .success {
+        color: green;
+        font-weight: bold;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="userForm" novalidate>
+      <h2>Feedback Form</h2>
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" />
+      <small id="nameError" class="error"></small>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="password" />
+      <small id="passwordError" class="error"></small>
+
+      <label for="comments">Comments:</label>
+      <textarea id="comments" rows="4" placeholder="Add your comments"></textarea>
+      <small id="commentsError" class="error"></small>
+
+      <button id="submitButton" type="submit">Submit</button>
+      <p id="formSuccess" class="success"></p>
+    </form>
+
+    <script>
+      const form = document.getElementById("userForm");
+      const nameInput = document.getElementById("name");
+      const passwordInput = document.getElementById("password");
+      const commentsInput = document.getElementById("comments");
+
+      const nameError = document.getElementById("nameError");
+      const passwordError = document.getElementById("passwordError");
+      const commentsError = document.getElementById("commentsError");
+      const formSuccess = document.getElementById("formSuccess");
+
+      const btn= document.getElementById("submitButton")
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        let isValid = true;
+
+        nameError.textContent = "";
+        passwordError.textContent = "";
+        commentsError.textContent = "";
+        formSuccess.textContent = "";
+
+        const nameValue = nameInput.value.trim();
+        const nameRegex = /^[A-Za-z\s]{3,}$/;
+
+        if (nameValue === "" || !nameRegex.test(nameValue)) {
+          nameError.textContent =
+            "Name must be at least 3 characters and contain only letters and spaces.";
+          isValid = false;
+        }
+
+        const passwordValue = passwordInput.value;
+        const passwordRegex =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
+        if (!passwordRegex.test(passwordValue)) {
+          passwordError.textContent =
+            "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.";
+          isValid = false;
+          btn.style.backgroundColor="red";
+        }
+
+        const commentsValue = commentsInput.value.trim();
+
+        if (commentsValue === "") {
+          commentsError.textContent = "Comment cannot be empty.";
+          btn.style.backgroundColor="red";
+          isValid = false;
+        } else if (commentsValue.length > 200) {
+          commentsError.textContent = "Comment must not exceed 200 characters.";
+          btn.style.backgroundColor="red";
+          isValid = false;
+        }
+
+        if (isValid) {
+          formSuccess.textContent = "Form submitted successfully!";
+          btn.style.backgroundColor="green";
+         
+          form.reset(); 
+        }
+      });
+    </script>
+  </body>
+</html>
