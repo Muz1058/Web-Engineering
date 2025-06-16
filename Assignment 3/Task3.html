@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Content Creator</title>
+  <style>
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      padding: 20px;
+      background-color: orange;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #desc{
+        color: #fafafa;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      margin-top: 5px;
+      padding: 8px;
+      font-size: 16px;
+      width: 400px;
+      border: none;
+      border-radius: 6px;
+    }
+    select{
+        cursor: pointer;
+        
+    }
+
+    #output {
+      margin-top: 30px;
+      border: 2px solid black;
+      width: 400px;
+      border-radius: 6px;
+      display: none;
+      background-color: rgba(223, 98, 15, 0.925);
+
+    }
+
+    .content-block {
+
+      border: 1px solid #ccc;
+      padding: 12px;
+      margin-bottom: 20px;
+      margin-left: 12px;
+      margin-right: 12px;
+      margin-top: 20px;
+      border-radius: 6px;
+      background-color: #fafaaf;
+      
+      
+    }
+    #addContentBtn{
+        font-weight: bold;
+        border-radius: 10px;
+        background-color: #414114;
+        color: #fafafa;
+        cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="desc">Create Custom Heading + Paragraph</h1>
+
+  <label for="headingLevel">Choose Heading Level</label>
+  <select id="headingLevel">
+    <option value="h1">H1</option>
+    <option value="h2">H2</option>
+    <option value="h3">H3</option>
+    <option value="h4">H4</option>
+    <option value="h5">H5</option>
+    <option value="h6">H6</option>
+  </select>
+
+  <label for="headingText">Heading Text</label>
+  <input type="text" id="headingText" placeholder="Enter headings text" />
+
+  <label for="paragraphText">Paragraph</label>
+  <textarea id="paragraphText" rows="4" placeholder="Enter paragraph text"></textarea>
+
+ <div> 
+    <button id="addContentBtn">Add Content</button>
+</div>
+
+  <div id="output"></div>
+
+  <script>
+    const addBtn = document.getElementById("addContentBtn");
+    const output = document.getElementById("output");
+
+    addBtn.addEventListener("click", () => {
+        const output=document.getElementById("output")
+      const headingLevel = document.getElementById("headingLevel").value;
+      const headingText = document.getElementById("headingText").value.trim();
+      const paragraphText = document.getElementById("paragraphText").value.trim();
+
+      if (!headingText || !paragraphText) {
+        alert("Please fill in both heading and paragraph.");
+        return;
+      }
+      else{
+        const heading = document.createElement(headingLevel);
+      heading.textContent = headingText+":";
+
+     
+      const paragraph = document.createElement("p");
+      paragraph.textContent = paragraphText;
+
+     
+      const newblock = document.createElement("div");
+      newblock.classList.add("content-block");
+      newblock.appendChild(heading);
+      newblock.appendChild(paragraph);
+
+     output.style.display="block";
+      output.appendChild(newblock);
+
+      
+      document.getElementById("headingText").value = "";
+      document.getElementById("paragraphText").value = "";
+      }
+
+     
+      
+    });
+  </script>
+
+</body>
+</html>
