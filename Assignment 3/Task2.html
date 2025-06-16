@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Content Replacement</title>
+  <style>
+    *{
+        background-color: #414141;
+        color: #fafafa;
+       
+    }
+    h2{
+         text-align: center;
+    }
+    
+    li {
+      cursor: pointer;
+       font-size: 24px;
+        font-weight: bolder;
+        text-decoration:underline;
+        
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Click any item to replace its content</h2>
+
+  <ol>
+    <li>oye</li>
+    <li>can</li>
+    <li>you</li>
+    <li>click</li>
+    <li>us</li>
+    
+  </ol>
+
+  <script>
+    const items = document.querySelectorAll("li");
+    
+
+    items.forEach(item => {
+      item.addEventListener("click", () => {
+        item.textContent = `hy`
+         
+      });
+    });
+
+
+  </script>
+
+</body>
+</html>
