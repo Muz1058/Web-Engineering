@@ -8,21 +8,8 @@
 <body>
     hj
 </body>
-<script>
-    let questions=[];
-    fetch("questions.json").then(data =>{
-    
-    return data.json()
-}).then(data=>{
-   questions=data
-    let statement = questions.map(q => q.question);
-    console.log(statement);
+<script src="script.js">
+   
 
-})
-.catch(e=>{
-    console.log(e);
-})
-//let statement=questions.map(i => i.question)
-//console.log(questions);
 </script>
 </html>
