@@ -3,13 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Data Fetching</title>
+
 </head>
 <body>
-    hj
+    <header class="welcome">
+        <h1 id="welcome-note">Welcome</h1>
+        <button id="startBtn">Start Quiz </button>
+
+    </header>
+    <main>
+        <form id="form" action="">
+            <div class="question">
+            <div class="label">
+                <label for="Sr" class="question-sr">Sr.1: </label>
+            <label for="question" id="statement"> Which tag is used to create a hyperlink in HTML?</label>
+            </div>
+        </br>
+            <div class="radioBtn">
+                <div class="radioBtn-options"><input type="radio" name="option" class="question-option" value="0" id="option-a" required>a</div>
+                <div class="radioBtn-options"><input type="radio" name="option" class="question-option" value="1" id="option-b" required>b</div>
+                <div class="radioBtn-options"><input type="radio" name="option" class="question-option" value="2" id="option-c" required>c</div>
+                <div class="radioBtn-options"><input type="radio" name="option" class="question-option" value="3" id="option-d" required>d</div>
+            </div>
+            </div>
+        </form>
+    </main>
+
+    
 </body>
 <script src="script.js">
    
+
 
 </script>
 </html>
