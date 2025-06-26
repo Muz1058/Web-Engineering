@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgba(65, 93, 255, 0.836);
+}
+.welcome{
+     margin: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+
+}
+#welcome-note{
+   color: #fafafa;
+   font-family:'Courier New', Courier, monospace;
+   font-size: 100px;
+}
+#startBtn{
+    height: 80px;
+    width: 120px;
+    border: none;
+    border-radius: 50%;
+    padding: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    background-color: #fafafa;
+    font-size: larger;
+}
+.question{
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+.label{
+
+}
+.question-sr{
+font-family: 'Times New Roman', Times, serif;
+font-weight: 700;
+font-size:24px;
+color: #000;
+}
+#statement{
+font-family: 'Times New Roman', Times, serif;
+font-weight: 700;
+font-size:24px;
+color: #fafafa;
+}
+.radioBtn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 50px;  
+
+}
+/* Hide default radio */
+.question-option {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #fafafa;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  margin-right: 10px;
+}
+
+/* Selected inner circle */
+.question-option:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  background-color: #dd1954;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Label next to radio */
+.radioBtn-options {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: #fafafa;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
