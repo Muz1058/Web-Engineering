@@ -1,3 +1,5 @@
+let form=document.querySelector("#form")
+   const selectedOption = document.querySelector('input[name="option"]:checked');
 let quizData=[];
 let questions=[];
 let options=[];
@@ -27,12 +29,20 @@ let question;
 
         options=q.options
         correctIndex=q.correctIndex
+        getQuiz(question,options,correctIndex)
         console.log("question ",question);
 
         console.log("options  ",options);
         console.log("correctIndex  ",correctIndex);
 
      });
+
+ }
+ function getQuiz(question,options,correctIndex){
+
+    let q=document.createElement(div);
+    q.innerHtml="<string>hdsjfd<String>"
+    form.appendChild("q")
 
  }
  
