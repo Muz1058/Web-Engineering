@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Fetching</title>
+</head>
+<body>
+    hj
+</body>
+<script>
+    let questions=[];
+    fetch("questions.json").then(data =>{
+    
+    return data.json()
+}).then(data=>{
+   questions=data
+    let statement = questions.map(q => q.question);
+    console.log(statement);
+
+})
+.catch(e=>{
+    console.log(e);
+})
+//let statement=questions.map(i => i.question)
+//console.log(questions);
+</script>
+</html>
